@@ -40,7 +40,7 @@ class GaleriController extends Controller
         $galeri = Galeri::find($id);
 
         if (!$galeri) {
-            return redirect()->route('galeri.index')->with('error', 'Galeri not found');
+            return redirect()->route('admin-galeri.index')->with('error', 'Foto tidak berhasil ditemukan');
         }
 
         $imagePath = 'public/data/galeri/' . $galeri->gambar;
@@ -51,7 +51,7 @@ class GaleriController extends Controller
 
         $galeri->delete();
 
-        return redirect()->route('admin-galeri.index')->with('success', 'Galeri deleted successfully');
+        return redirect()->route('admin-galeri.index')->with('success', 'Foto berhasil dihapus');
     }
 
     public function edit($id)
@@ -59,33 +59,29 @@ class GaleriController extends Controller
         $data = Galeri::find($id);
 
         if (!$data) {
-            return redirect()->route('admin-galeri.index')->with('error', 'Galeri not found');
+            return redirect()->route('admin-galeri.index')->with('error', 'Foto tidak berhasil ditemukan');
         }
 
         return view('admin.galeri.edit', compact('data'));
     }
 
-    public function update(Request $request, $id)
+    public function setVisible(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            // Add validation rules for your fields
-        ]);
+        $data = Galeri::findorFail($id);
 
-        // Find the Galeri item by its ID
-        $galeri = Galeri::find($id);
-
-        if (!$galeri) {
-            return redirect()->route('admin-galeri.index')->with('error', 'Galeri not found');
+        if (!$data) {
+            return redirect()->route('admin-galeri.index')->with('error', 'Foto tidak berhasil ditemukan');
         }
 
-        // Update the Galeri item with the new data
-        $galeri->update([
-            'field1' => $request->input('field1'),
-            'field2' => $request->input('field2'),
-            // Add more fields as needed
-        ]);
+        if($data->publish == 0){
+            $data->publish = 1;
+        } else if($data->publish == 1){
+            $data->publish = 0;
+        }
 
-        return redirect()->route('admin-galeri.index')->with('success', 'Galeri updated successfully');
+        $data->save();
+
+        return redirect()->route('admin-galeri.index')->with('success', 'Setting publish berhasil diubah');
     }
 
 }

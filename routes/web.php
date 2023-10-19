@@ -30,10 +30,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard.index');
-    Route::get('/admin/pengajuan', [AdminPengajuanController::class, 'index'])->name('admin-pengajuan.index');
+
+    //Admin Pengajuan
+    Route::get('/admin/pengajuan-masuk', [AdminPengajuanController::class, 'masuk'])->name('admin-pengajuan.masuk');
+    Route::get('/admin/pengajuan-proses', [AdminPengajuanController::class, 'proses'])->name('admin-pengajuan.proses');
+    Route::get('/admin/pengajuan-selesai', [AdminPengajuanController::class, 'selesai'])->name('admin-pengajuan.selesai');
+    Route::get('/admin/pengajuan-ditolak', [AdminPengajuanController::class, 'ditolak'])->name('admin-pengajuan.ditolak');
+
+    //Admin Galeri
     Route::get('/admin/galeri', [AdminGaleriController::class, 'index'])->name('admin-galeri.index');
     Route::get('/admin/galeri/create', [AdminGaleriController::class, 'create'])->name('admin-galeri.create');
-    Route::get('/admin/galeri/edit/{id}', [AdminGaleriController::class, 'edit'])->name('admin-galeri.edit');
+    Route::put('/admin/galeri/{id}', [AdminGaleriController::class, 'setVisible'])->name('admin-galeri.setVisible');
     Route::post('/admin/galeri', [AdminGaleriController::class, 'store'])->name('admin-galeri.store');
     Route::delete('/galeri/delete/{id}', [AdminGaleriController::class, 'delete'])->name('admin-galeri.delete');
 

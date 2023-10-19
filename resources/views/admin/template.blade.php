@@ -33,9 +33,9 @@
 <body class="app sidebar-mini ltr light-mode">
 
     <!-- GLOBAL-LOADER -->
-    {{-- <div id="global-loader">
+    <div id="global-loader">
         <img src="{{ asset('admin/images/loader.svg') }}" class="loader-img" alt="Loader">
-    </div> --}}
+    </div>
     <!-- /GLOBAL-LOADER -->
 
     <!-- PAGE -->
@@ -131,8 +131,8 @@
                 <aside class="app-sidebar">
                     <div class="side-header">
                         <a class="header-brand1" href="index.html">
-                            <img src="{{ asset('admin/images/brand/logo.png') }}" class="header-brand-img desktop-logo"
-                                alt="logo">
+                            <img src="{{ asset('admin/images/brand/logo.png') }}"
+                                class="header-brand-img desktop-logo" alt="logo">
                             <img src="{{ asset('admin/images/brand/logo-1.png') }}"
                                 class="header-brand-img toggle-logo" alt="logo">
                             <img src="{{ asset('admin/images/brand/logo-2.png') }}"
@@ -162,15 +162,48 @@
                             </li>
                             <li class="slide">
                                 <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-pengajuan.index') }}"><i
-                                        class="side-menu__icon fe fe-book-open"></i><span
-                                        class="side-menu__label">Pengajuan</span></a>
+                                    href="{{ route('admin-pengajuan.masuk') }}"><i
+                                        class="side-menu__icon fe fe-book"></i><span
+                                        class="side-menu__label">Pengajuan Masuk</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide"
+                                    href="{{ route('admin-pengajuan.proses') }}"><i
+                                        class="side-menu__icon fe fe-book"></i><span
+                                        class="side-menu__label">Pengajuan Proses</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide"
+                                    href="{{ route('admin-pengajuan.selesai') }}"><i
+                                        class="side-menu__icon fe fe-book"></i><span
+                                        class="side-menu__label">Pengajuan Selesai</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide"
+                                    href="{{ route('admin-pengajuan.ditolak') }}"><i
+                                        class="side-menu__icon fe fe-book"></i><span
+                                        class="side-menu__label">Pengajuan Ditolak</span></a>
+                            </li>
+                            <li class="slide">
+                            </li>
+                            <li class="sub-category">
+                                <h3>Pages</h3>
                             </li>
                             <li class="slide">
                                 <a class="side-menu__item" data-bs-toggle="slide"
                                     href="{{ route('admin-galeri.index') }}"><i
-                                        class="side-menu__icon fe fe-image"></i><span
+                                        class="side-menu__icon fe fe-map"></i><span
+                                        class="side-menu__label">Home</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide"
+                                    href="{{ route('admin-galeri.index') }}"><i
+                                        class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Tentang
+                                        RJ</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide"
+                                    href="{{ route('admin-galeri.index') }}"><i
+                                        class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Tata Cara
+                                        Pengajuan</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide"
+                                    href="{{ route('admin-galeri.index') }}"><i
+                                        class="side-menu__icon fe fe-map"></i><span
                                         class="side-menu__label">Galeri</span></a>
+                                <a class="side-menu__item" data-bs-toggle="slide"
+                                    href="{{ route('admin-galeri.index') }}"><i
+                                        class="side-menu__icon fe fe-map"></i><span
+                                        class="side-menu__label">Kontak</span></a>
                             </li>
                         </ul>
                         <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg"
@@ -246,6 +279,9 @@
         <!-- SIDEBAR JS -->
         <script src="{{ asset('admin/plugins/sidebar/sidebar.js') }}"></script>
 
+        @stack('css')
+        @stack('script')
+
         <!-- Perfect SCROLLBAR JS-->
         <script src="{{ asset('admin/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
         <script src="{{ asset('admin/plugins/p-scroll/pscroll.js') }}"></script>
@@ -266,7 +302,6 @@
         <!-- CUSTOM JS -->
         <script src="{{ asset('admin/js/custom.js') }}"></script>
 
-        @stack('css')
 </body>
 
 </html>

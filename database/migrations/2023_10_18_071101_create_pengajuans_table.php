@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pelapor');
             $table->string('nama_perkara');
-            $table->string('jenis_perkara');
             $table->text('alamat_tersangka');
             $table->string('polisi');
             $table->string('no_pelapor');
             $table->text('deskripsi');
-            $table->string('status')->default('Proses');
+            $table->string('status')->default('Masuk');
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });

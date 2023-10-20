@@ -35,7 +35,6 @@
                                                 <th class="wd-15p border-bottom-0">No</th>
                                                 <th class="wd-15p border-bottom-0">Nama Pelapor</th>
                                                 <th class="wd-20p border-bottom-0">Nama Perkara</th>
-                                                <th class="wd-15p border-bottom-0">Jenis Perkara</th>
                                                 <th class="wd-10p border-bottom-0">Alamat Tersangka</th>
                                                 <th class="wd-25p border-bottom-0">POLRES/POLSEK</th>
                                                 <th class="wd-20p border-bottom-0">No Telp Pelapor</th>
@@ -44,20 +43,45 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Chloe</td>
-                                                <td>System Developer</td>
-                                                <td>Perkara 1</td>
-                                                <td>Jl. Saron VI No.5555</td>
-                                                <td>POLRES Ningan</td>
-                                                <td>081224377189</td>
-                                                <td>Deskripsi...................</td>
-                                                <td>
-                                                    <a href="" class="btn btn-sm btn-success">Proses</a>
-                                                    <a href="" class="btn btn-sm btn-danger">Batal</a>
-                                                </td>
-                                            </tr>
+                                            @if ($data->isEmpty())
+                                                <tr class="text-center">
+                                                    <td colspan="9">No data available</td>
+                                                </tr>
+                                            @else
+                                                @foreach ($data as $key)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $key->nama_pelapor }}</td>
+                                                        <td>{{ $key->nama_perkara }}</td>
+                                                        <td>{{ $key->alamat_tersangka }}</td>
+                                                        <td>{{ $key->polisi }}</td>
+                                                        <td>{{ $key->no_pelapor }}</td>
+                                                        <td>{{ $key->deskripsi }}</td>
+                                                        <td>
+                                                            <a href="" class="btn btn-warning"><i
+                                                                    class="fa fa-list-alt"></i></a>
+                                                            <form id="proses-form-{{ $key->id }}" method="POST"
+                                                                action="{{ route('admin-pengajuan.sendProses', ['id' => $key->id]) }}">
+                                                                @method('PUT')
+                                                                @csrf
+                                                                <button type="button" class="btn btn-success proses-button"
+                                                                    data-id="{{ $key->id }}"><i
+                                                                        class="fe fe-check"></i></button>
+                                                            </form>
+                                                            <form id="ditolak-form-{{ $key->id }}" method="POST"
+                                                                action="{{ route('admin-pengajuan.sendDitolak', ['id' => $key->id]) }}">
+                                                                @method('PUT')
+                                                                @csrf
+                                                                <input type="text" name="keterangan" hidden />
+                                                                <button type="button" class="btn btn-danger ditolak-button"
+                                                                    data-id="{{ $key->id }}">
+                                                                    <i class="fe fe-x"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -87,5 +111,85 @@
         <script src="{{ asset('admin/plugins/datatable/dataTables.responsive.min.js') }}"></script>
         <script src="{{ asset('admin/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
         <script src="{{ asset('admin/js/table-data.js') }}"></script>
+
+        <!-- SWEET-ALERT JS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    @endpush
+
+    @push('script')
+        <script>
+            document.querySelectorAll('.proses-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+
+                    Swal.fire({
+                        title: 'Apakah anda yakin?',
+                        text: 'Data akan diubah statusnya menjadi proses!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Tidak'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Submit the form when confirmed
+                            document.getElementById('proses-form-' + id).submit();
+                        }
+                    });
+                });
+            });
+
+            document.querySelectorAll('.ditolak-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+
+                    Swal.fire({
+                        title: 'Apakah anda yakin?',
+                        text: `Data akan diubah statusnya menjadi Ditolak!`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Tidak',
+                        input: 'text',
+                        inputPlaceholder: 'Masukkan keterangan penolakan disini', // Placeholder text
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const keterangan = result.value;
+                            if (keterangan) {
+                                const form = document.getElementById(`ditolak-form-${id}`);
+                                form.querySelector('[name="keterangan"]').value = keterangan;
+                                form.submit();
+                            } else {
+                                Swal.fire('Keterangan is required', '', 'error');
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Sukses',
+                    text: '{{ session('success') }}',
+                });
+            </script>
+        @endif
+
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '{{ session('error') }}',
+                });
+            </script>
+        @endif
     @endpush
 @endsection

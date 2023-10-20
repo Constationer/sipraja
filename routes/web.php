@@ -18,7 +18,7 @@ Route::get('/cara-pengaduan', [CaraPengaduanController::class, 'index'])->name('
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak.index');
 Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
-
+Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard.index');
 
     //Admin Pengajuan
@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/pengajuan-proses', [AdminPengajuanController::class, 'proses'])->name('admin-pengajuan.proses');
     Route::get('/admin/pengajuan-selesai', [AdminPengajuanController::class, 'selesai'])->name('admin-pengajuan.selesai');
     Route::get('/admin/pengajuan-ditolak', [AdminPengajuanController::class, 'ditolak'])->name('admin-pengajuan.ditolak');
+    Route::put('/admin/pengajuan/proses/{id}', [AdminPengajuanController::class, 'sendProses'])->name('admin-pengajuan.sendProses');
+    Route::put('/admin/pengajuan/ditolak/{id}', [AdminPengajuanController::class, 'sendDitolak'])->name('admin-pengajuan.sendDitolak');
+    Route::put('/admin/pengajuan/selesai/{id}', [AdminPengajuanController::class, 'sendSelesai'])->name('admin-pengajuan.sendSelesai');
 
     //Admin Galeri
     Route::get('/admin/galeri', [AdminGaleriController::class, 'index'])->name('admin-galeri.index');
@@ -43,7 +46,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/galeri/{id}', [AdminGaleriController::class, 'setVisible'])->name('admin-galeri.setVisible');
     Route::post('/admin/galeri', [AdminGaleriController::class, 'store'])->name('admin-galeri.store');
     Route::delete('/galeri/delete/{id}', [AdminGaleriController::class, 'delete'])->name('admin-galeri.delete');
-
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

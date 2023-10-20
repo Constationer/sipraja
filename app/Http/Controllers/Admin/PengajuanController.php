@@ -64,7 +64,7 @@ class PengajuanController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'target' => '081224377189|' . $data->nama_pelapor . '|' . $data->nama_perkara . '|' . $data->status,
+                'target' => $data->no_pelapor . '|' . $data->nama_pelapor . '|' . $data->nama_perkara . '|' . $data->status,
                 'message' => "*Sistem Informasi Dan Pengajuan Restorative Justice Kejaksaan*\n\nBerikut adalah update pada Pengajuan Restorative Justice, dengan data dibawah ini\n\nNama Pelapor: {name}\nNama Perkara: {var1}\nStatus: {var2}\n\nTerima kasih\n*Kejaksaan Negeri Luwu Utara*",
                 'typing' => false,
                 'delay' => '2',
@@ -105,7 +105,7 @@ class PengajuanController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'target' => '081224377189|' . $data->nama_pelapor . '|' . $data->nama_perkara . '|' . $data->status . '|' . $data->keterangan,
+                'target' => $data->no_pelapor . '|' . $data->nama_pelapor . '|' . $data->nama_perkara . '|' . $data->status . '|' . $data->keterangan,
                 'message' => "*Sistem Informasi Dan Pengajuan Restorative Justice Kejaksaan*\n\nBerikut adalah update pada Pengajuan Restorative Justice, dengan data dibawah ini\n\nNama Pelapor: {name}\nNama Perkara: {var1}\nStatus: {var2}\nKeterangan: {var3}\n\nTerima kasih\n*Kejaksaan Negeri Luwu Utara*",
                 'typing' => false,
                 'delay' => '2',
@@ -145,7 +145,7 @@ class PengajuanController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'target' => '081224377189|' . $data->nama_pelapor . '|' . $data->nama_perkara . '|' . $data->status . '|' . $data->keterangan,
+                'target' => $data->no_pelapor . '|' . $data->nama_pelapor . '|' . $data->nama_perkara . '|' . $data->status . '|' . $data->keterangan,
                 'message' => "*Sistem Informasi Dan Pengajuan Restorative Justice Kejaksaan*\n\nBerikut adalah update pada Pengajuan Restorative Justice, dengan data dibawah ini\n\nNama Pelapor: {name}\nNama Perkara: {var1}\nStatus: {var2}\nKeterangan: {var3}\n\nTerima kasih\n*Kejaksaan Negeri Luwu Utara*",
                 'typing' => false,
                 'delay' => '2',

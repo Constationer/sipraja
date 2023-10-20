@@ -40,6 +40,33 @@ class PengajuanController extends Controller
             'deskripsi'    => $request->input('deskripsi'),
         ]);
 
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'target' => $request->no_pelapor . '|' . $request->nama_pelapor . '|' . $request->nama_perkara . '|' . $request->status,
+                'message' => "*Sistem Informasi Dan Pengajuan Restorative Justice Kejaksaan*\n\nData anda sudah diterima untuk melakukan pengajuan Restorative Justice dengan data sebagai berikut \n\nNama Pelapor: {name}\nNama Perkara: {var1}\nStatus: {var2}\n\nTerima kasih\n*Kejaksaan Negeri Luwu Utara*",
+                'typing' => false,
+                'delay' => '2',
+                'countryCode' => '62',
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: VyFngE4ZBU0IR6nhpXS@'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
         return redirect()->route('pengajuan.index')->with('success', 'Pengajuan Restorative Justice Berhasil Diajukan.');
     }
 }

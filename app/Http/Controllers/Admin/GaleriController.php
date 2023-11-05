@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $data = Galeri::all();
 
@@ -24,9 +25,11 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $gambar = $request->file('gambar');
-        $gambarPath = $gambar->store('public/data/galeri');
+        if ($gambar) {
+            $gambarPath = $gambar->store('public/data/galeri');
+        }
         $gambarPath = str_replace('public/', '', $gambarPath);
-        
+
         Galeri::create([
             'gambar'    => $gambarPath,
             'publish'   => $request->has('publish'),
@@ -73,9 +76,9 @@ class GaleriController extends Controller
             return redirect()->route('admin-galeri.index')->with('error', 'Foto tidak berhasil ditemukan');
         }
 
-        if($data->publish == 0){
+        if ($data->publish == 0) {
             $data->publish = 1;
-        } else if($data->publish == 1){
+        } else if ($data->publish == 1) {
             $data->publish = 0;
         }
 
@@ -83,5 +86,4 @@ class GaleriController extends Controller
 
         return redirect()->route('admin-galeri.index')->with('success', 'Setting publish berhasil diubah');
     }
-
 }

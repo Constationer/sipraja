@@ -35,6 +35,7 @@
                                                 <th class="wd-15p border-bottom-0">No</th>
                                                 <th class="wd-15p border-bottom-0">Nama Pelapor</th>
                                                 <th class="wd-20p border-bottom-0">Nama Perkara</th>
+                                                <th class="wd-10p border-bottom-0">Desa Tersangka</th>
                                                 <th class="wd-10p border-bottom-0">Alamat Tersangka</th>
                                                 <th class="wd-25p border-bottom-0">POLRES/POLSEK</th>
                                                 <th class="wd-20p border-bottom-0">No Telp Pelapor</th>
@@ -53,13 +54,12 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $key->nama_pelapor }}</td>
                                                         <td>{{ $key->nama_perkara }}</td>
+                                                        <td>{{ $key->user->name }}</td>
                                                         <td>{{ $key->alamat_tersangka }}</td>
                                                         <td>{{ $key->polisi }}</td>
                                                         <td>{{ $key->no_pelapor }}</td>
                                                         <td>{{ $key->deskripsi }}</td>
                                                         <td>
-                                                            <a href="" class="btn btn-warning"><i
-                                                                    class="fa fa-list-alt"></i></a>
                                                             <form id="proses-form-{{ $key->id }}" method="POST"
                                                                 action="{{ route('admin-pengajuan.sendProses', ['id' => $key->id]) }}">
                                                                 @method('PUT')

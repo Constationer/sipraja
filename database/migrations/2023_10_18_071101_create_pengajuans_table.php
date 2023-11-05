@@ -14,13 +14,16 @@ return new class extends Migration
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pelapor');
+            $table->text('alamat_pelapor');
             $table->string('nama_perkara');
+            $table->string('desa_tersangka');
             $table->text('alamat_tersangka');
             $table->string('polisi');
             $table->string('no_pelapor');
             $table->text('deskripsi');
             $table->string('status')->default('Masuk');
             $table->string('keterangan')->nullable();
+            $table->string('kode');
             $table->timestamps();
         });
     }

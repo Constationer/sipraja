@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Galeri;
+use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,7 +12,11 @@ class GaleriController extends Controller
 {
     public function index()
     {
-
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         $data = Galeri::all();
 
         return view('admin.galeri.index', compact('data'));
@@ -19,7 +24,12 @@ class GaleriController extends Controller
 
     public function create()
     {
-        return view('admin.galeri.create');
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
+        return view('admin.galeri.create', compact('checker'));
     }
 
     public function store(Request $request)
@@ -59,13 +69,18 @@ class GaleriController extends Controller
 
     public function edit($id)
     {
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         $data = Galeri::find($id);
 
         if (!$data) {
             return redirect()->route('admin-galeri.index')->with('error', 'Foto tidak berhasil ditemukan');
         }
 
-        return view('admin.galeri.edit', compact('data'));
+        return view('admin.galeri.edit', compact('data', 'checker'));
     }
 
     public function setVisible(Request $request, $id)

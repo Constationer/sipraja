@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pengajuan;
 use App\Models\Sosialisasi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,15 +13,25 @@ class SosialisasiController extends Controller
     public function index()
     {
 
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         $data = Sosialisasi::with('user')->get();
 
-        return view('admin.sosialisasi.index', compact('data'));
+        return view('admin.sosialisasi.index', compact('data', 'checker'));
     }
 
     public function create()
     {
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         $data = User::where('role', 'user')->get();
-        return view('admin.sosialisasi.create', compact('data'));
+        return view('admin.sosialisasi.create', compact('data', 'checker'));
     }
 
     public function store(Request $request)
@@ -68,9 +79,14 @@ class SosialisasiController extends Controller
 
     public function edit($id)
     {
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         $data           = User::all();
         $sosialisasi    = Sosialisasi::findoRFail($id);
-        return view('admin.sosialisasi.edit', compact('data', 'sosialisasi'));
+        return view('admin.sosialisasi.edit', compact('data', 'checker', 'sosialisasi'));
     }
 
     public function update(Request $request, $id)

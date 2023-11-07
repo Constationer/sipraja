@@ -11,15 +11,25 @@ class PengajuanController extends Controller
 {
     public function index()
     {
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         $data = Pengajuan::where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
-        return view('admin/pengajuan/index', compact('data'));
+        return view('admin/pengajuan/index', compact('data', 'checker'));
     }
 
     public function create()
     {
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         $data = User::where('role', 'user')->get();
 
-        return view('admin/pengajuan/create', compact('data'));
+        return view('admin/pengajuan/create', compact('data', 'checker'));
     }
 
     public function generateUniqueCode()
@@ -110,45 +120,65 @@ class PengajuanController extends Controller
     public function masuk()
     {
         if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
+        if (auth()->user()->role == 'Admin') {
             $data = Pengajuan::with('user')->where('status', 'Masuk')->orderBy('created_at', 'desc')->get();
         } else {
             $data = Pengajuan::with('user')->where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
 
-        return view('admin/pengajuan/masuk', compact('data'));
+        return view('admin/pengajuan/masuk', compact('data', 'checker'));
     }
 
     public function proses()
     {
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         if (auth()->user()->role == 'Admin') {
             $data = Pengajuan::where('status', 'Proses')->orderBy('created_at', 'desc')->get();
         } else {
             $data = Pengajuan::where('status', 'Proses')->where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
 
-        return view('admin/pengajuan/proses', compact('data'));
+        return view('admin/pengajuan/proses', compact('data', 'checker'));
     }
 
     public function selesai()
     {
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         if (auth()->user()->role == 'Admin') {
             $data = Pengajuan::where('status', 'Selesai')->orderBy('created_at', 'desc')->get();
         } else {
             $data = Pengajuan::where('status', 'Selesai')->where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
 
-        return view('admin/pengajuan/selesai', compact('data'));
+        return view('admin/pengajuan/selesai', compact('data', 'checker'));
     }
 
     public function ditolak()
     {
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         if (auth()->user()->role == 'Admin') {
             $data = Pengajuan::where('status', 'Ditolak')->orderBy('created_at', 'desc')->get();
         } else {
             $data = Pengajuan::where('status', 'Ditolak')->where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
 
-        return view('admin/pengajuan/ditolak', compact('data'));
+        return view('admin/pengajuan/ditolak', compact('data', 'checker'));
     }
 
     public function sendProses(Request $request, $id)

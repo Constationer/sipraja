@@ -5,8 +5,19 @@
     <div class="container-xxl bg-primary hero-header">
         <div class="container px-lg-5">
             <div class="row g-5 align-items-end">
-                <div class="col-lg-6 text-center text-lg-start order-2 order-lg-1">
-                    <h1 class="mb-4 animated slideInDown text-white">Sistem Informasi Rumah <i>Restorative Justice Online</i>
+                <div class="col-lg-12 text-center">
+                    <h1 class="mb-4 animated slideInDown text-white">Sistem Informasi <br>Rumah <i>Restorative Justice
+                            Online</i>
+                    </h1>
+                    <img class="img-fluid animated zoomIn" src="{{ 'client/img/hero.png' }}" alt=""
+                        style="max-width: 350px">
+                    <br>
+                    <a href="{{ route('pengajuan.index') }}"
+                        class="btn btn-light my-3 px-sm-5 rounded-pill animated slideInRight">Pengajuan</a>
+                </div>
+                {{-- <div class="col-lg-6 text-center text-lg-start order-2 order-lg-1">
+                    <h1 class="mb-4 animated slideInDown text-white">Sistem Informasi Rumah <i>Restorative Justice
+                            Online</i>
                     </h1>
                     <img src="https://images.squarespace-cdn.com/content/v1/5d3f241fa4e0350001fa20d5/1636491460338-AIZAXV2978MGIDQE0GT7/qr-code.png?format=2500w"
                         class="img-fluid" style="max-height:125px">
@@ -15,14 +26,28 @@
                 </div>
                 <div class="col-lg-6 text-center text-lg-start order-1 order-lg-2">
                     <img class="img-fluid animated zoomIn" src="{{ 'client/img/hero.png' }}" alt="">
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
     <div class="container-xxl py-5">
         <div class="container px-lg-5">
-            <div class="row g-4">
+            <div class="row g-4 align-items-center justify-content-center">
                 <div class="col-lg-12 wow fadeInUp text-center" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <h1 class="text-center mb-4">Selamat Datang</h1>
+                    <img src="{{ asset('client/img/logo.png') }}" class="img-fluid">
+                </div>
+                <div class="col-lg-6 col-lg-offset-3 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <div class="bg-light rounded text-center p-4">
+                        <h5 class="mb-3">Sistem Informasi Rumah <i>Restorative Justice Online</i></h5>
+                        <p class="m-0">Merupakan Sistem informasi yang dibangun untuk Mengoptimalisasi Peran <i>Rumah
+                                Restorative Justice</i> (Rj) Berbasis Online Dalam Meningkatkan Pemahaman Dan Kesadaran
+                            Hukum Masyarakat Desa Pada Wilayah Kabupaten Luwu Utara.</p>
+                    </div>
+                </div>
+                {{-- <div class="col-lg-12 wow fadeInUp text-center" data-wow-delay="0.1s"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 
                     <h1 class="text-center mb-4">Selamat Datang</h1>
@@ -38,7 +63,7 @@
                             Masyarakat Desa Pada Wilayah Kabupaten Luwu Utara.
                         </p>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -186,7 +211,7 @@
                 <div class="col-lg-7 text-center">
                     <p class="section-title text-white justify-content-center"></p>
                     <h1 class="text-center text-white mb-4">Punya Pertanyaan Seputar Pengajuan Restorative Justice?
-                        Hubungi Kami Melalui Whatsapp?
+                        Hubungi Kami Melalui Whatsapp!
                     </h1>
                     <div class="position-relative w-100 mt-3">
                         <a href="https://wa.me/6281224377189" target="_blank"
@@ -250,51 +275,33 @@
                             <img class="img-fluid w-100" src="client/img/img-2.jpg" alt=""
                                 style="max-height:250px">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-square btn-outline-light mx-1" href=""
+                                <a class="btn btn-square btn-outline-light mx-1" href="client/img/img-2.jpg"
                                     data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
-                            {{-- <img class="img-fluid w-100" src="{{ asset('storage/' . $key->gambar) }}" alt="">
-                                <div class="portfolio-overlay">
-                                    <a class="btn btn-square btn-outline-light mx-1"
-                                        href="{{ asset('storage/' . $key->gambar) }}" data-lightbox="portfolio"><i
-                                            class="fa fa-eye"></i></a>
-                                </div> --}}
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded overflow-hidden">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="client/img/img-3.jpg" alt=""
+                            <img class="img-fluid w-100" src="client/img/img-2.jpg" alt=""
                                 style="max-height:250px">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-square btn-outline-light mx-1" href=""
+                                <a class="btn btn-square btn-outline-light mx-1" href="client/img/img-2.jpg"
                                     data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
-                            {{-- <img class="img-fluid w-100" src="{{ asset('storage/' . $key->gambar) }}" alt="">
-                                <div class="portfolio-overlay">
-                                    <a class="btn btn-square btn-outline-light mx-1"
-                                        href="{{ asset('storage/' . $key->gambar) }}" data-lightbox="portfolio"><i
-                                            class="fa fa-eye"></i></a>
-                                </div> --}}
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded overflow-hidden">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="client/img/img-4.jpg" alt=""
+                            <img class="img-fluid w-100" src="client/img/img-2.jpg" alt=""
                                 style="max-height:250px">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-square btn-outline-light mx-1" href=""
+                                <a class="btn btn-square btn-outline-light mx-1" href="client/img/img-2.jpg"
                                     data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
-                            {{-- <img class="img-fluid w-100" src="{{ asset('storage/' . $key->gambar) }}" alt="">
-                                <div class="portfolio-overlay">
-                                    <a class="btn btn-square btn-outline-light mx-1"
-                                        href="{{ asset('storage/' . $key->gambar) }}" data-lightbox="portfolio"><i
-                                            class="fa fa-eye"></i></a>
-                                </div> --}}
                         </div>
                     </div>
                 </div>

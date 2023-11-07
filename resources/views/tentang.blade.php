@@ -32,7 +32,7 @@
                         adil dan seimbang bagi pihak korban maupun pelaku dengan mengedepankan pemulihan kembali pada
                         keadaan semula dan mengembalikan pola hubungan baik dalam masyarakat.
                     </p>
-                    <a href=""
+                    <a href="#section-1"
                         class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight w-100">Selanjutnya</a>
                 </div>
                 <div class="col-lg-6 text-center text-lg-start order-1 order-lg-2">
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="section-1">
         <div class="container px-lg-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 text-center text-lg-start">
@@ -61,14 +61,14 @@
                         • PERJA NO. 1 TAHUN 2022 TENTANG PERUBAHAN KETIGA ATAS PERATURAN JAKSA AGUNG NO.
                         PER-006/A/JA/07/2017 TENTANG ORGANISASI DAN TATA KERJA KEJAKSAAN REPUBLIK INDONESIA
                     </p>
-                    <a href=""
+                    <a href="#section-2"
                         class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight w-100">Selanjutnya</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="section-2">
         <div class="container px-lg-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 text-lg-start order-2 order-lg-1">
@@ -78,7 +78,7 @@
                         (<i>rechtmatigheid</i>) dan kemanfaatan (<i>doelmatigheid</i>) dalam pelaksanaan kewenangan
                         penuntutan berdasarkan
                         hukum dan hati nurani. </p>
-                    <a href=""
+                    <a href="#section-3"
                         class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight w-100">Selanjutnya</a>
                 </div>
                 <div class="col-lg-6 text-center order-1 order-lg-2">
@@ -88,16 +88,18 @@
         </div>
     </div>
 
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="section-3">
         <div class="container px-lg-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 text-center">
                     <img class="img-fluid animated zoomIn" src="{{ 'client/img/syarat.png' }}" alt="">
                 </div>
                 <div class="col-lg-6 text-lg-start">
-                    <h1 class="mb-4 animated slideInDown">SYARAT RJ
-                        (PASAL 5 ayat (1) perja no. 15/2020)
+                    <h1 class="mb-4 animated slideInDown">SYARAT RESTORATIVE JUSTICE
                     </h1>
+                    <h3 class="mb-4 animated slideInDown">
+                        (PASAL 5 ayat (1) perja no. 15/2020)
+                    </h3>
                     <p class="pb-3 animated slideInDown">
                         • TERSANGKA BARU PERTAMA KALI MELAKUKAN TINDAK PIDANA<br>
                         • TINDAK PIDANA HANYA DIANCAM DENGAN PIDANA DENDA ATAU DIANCAM PIDANA PENJARA TIDAK LEBIH DARI 5
@@ -105,25 +107,26 @@
                         • TINDAK PIDANA DILAKUKAN DENGAN NILAI BARANG BUKTI ATAU NILAI KERUGIAN YANG DITIMBULKAN AKIBAT DARI
                         TINDAK PIDANA TIDAK LEBIH DARI Rp. 2.500.000,00 (DUA JUTA LIMA RATUS RIBU RUPIAH).
                     </p>
-                    <a href=""
+                    <a href="#section-4"
                         class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight w-100">Selanjutnya</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="section-4">
         <div class="container px-lg-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 text-lg-start order-2 order-lg-1">
-                    <h1 class="mb-4 animated slideInDown">Penghindaran ‘STIGMA NEGATIF’</h1>
+                    <h1 class="mb-4 animated slideInDown">Penghindaran</h1>
+                    <h3 class="mb-4 animated slideInDown">"STIGMA NEGATIF"</h3>
                     <p class="pb-3 animated slideInDown">Melalui rj, stigma negatif atau labeling “orang salah” itu
                         dihapuskan. Ia tidak akan diadili di depan umum dan diberi kesempatan untuk bertaubat. Kalau dalam
                         masa kesempatan itu diberikan, orang itu mengulangi perbuatannya, maka dia siap untuk dipenjara.<br>
                         Rj hanya diperuntukkan untuk first offender atau orang yang baru pertama kali melakukan tindak
                         pidana sehingga penuntut umum masih memaafkan.
                     </p>
-                    <a href=""
+                    <a href="#section-5"
                         class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight w-100">Selanjutnya</a>
                 </div>
                 <div class="col-lg-6 text-center order-1 order-lg-2">
@@ -133,7 +136,7 @@
         </div>
     </div>
 
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="section-5">
         <div class="container px-lg-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 text-center text-lg-start">
@@ -182,4 +185,20 @@
         </div>
 
     </div>
+    @push('script')
+        <script>
+            $(document).ready(function() {
+                $('a[href^="#"]').on('click', function(event) {
+                    event.preventDefault();
+
+                    var target = this.hash;
+                    var $target = $(target);
+
+                    $('html, body').animate({
+                        'scrollTop': $target.offset().top
+                    }, 1000, 'swing');
+                });
+            });
+        </script>
+    @endpush
 @endsection

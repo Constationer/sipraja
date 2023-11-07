@@ -215,7 +215,8 @@ h6,
 
 /*** Hero Header ***/
 .hero-header {
-    padding: 14rem 0;
+    padding: 10rem 0;
+    padding-bottom: -10rem;
     background:
         url(../img/blob-top-left.png),
         url(../img/blob-top-right.png),

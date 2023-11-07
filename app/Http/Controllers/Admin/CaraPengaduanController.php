@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CaraPengaduan;
+use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,9 +13,14 @@ class CaraPengaduanController extends Controller
     public function index()
     {
 
+        if (auth()->user()->role == 'Admin') {
+            $checker = Pengajuan::where('status', 'Masuk')->count();
+        } else {
+            $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+        }
         $data = CaraPengaduan::all();
 
-        return view('admin.carapengaduan.index', compact('data'));
+        return view('admin.carapengaduan.index', compact('data', 'checker'));
     }
 
     public function create()

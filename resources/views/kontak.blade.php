@@ -24,16 +24,14 @@
         <div class="container py-5 px-lg-5">
             <div class="wow fadeInUp" data-wow-delay="0.1s">
                 <p class="section-title text-secondary justify-content-center"><span></span>Hubungi Kami<span></span></p>
-                <h1 class="text-center mb-5">Hubungi Untuk Pertanyaan Apa Pun</h1>
+                <h1 class="text-center mb-5">Punya Pertanyaan Seputar Pengajuan Restorative Justice, atau Permasalahan Hukum
+                    Lainnya?</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="wow fadeInUp" data-wow-delay="0.3s">
-                        <p class="text-center mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                            survived not only five centuries, but also the leap into electronic typesetting, remaining
-                            essentially unchanged</p>
+                        <p class="text-center mb-4">Silahkan isi kolom pertanyaan dibawah ini jika anda memiliki pertanyaan
+                            terkait Cara pengajuan Restorative Justice, Atau Permasalahan Hukum lainnya</p>
                         <form method="POST" action="{{ route('kontak.store') }}" class="form-horizontal"
                             enctype="multipart/form-data">
                             @csrf
@@ -67,7 +65,7 @@
                                         <input type="text" class="form-control @error('jenis') is-invalid @enderror"
                                             id="jenis" placeholder="Alamat Pelapor" name="jenis"
                                             value="{{ old('jenis') }}">
-                                        <label for="jenis">Jenis</label>
+                                        <label for="jenis">Judul Permasalahan</label>
                                         @error('jenis')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

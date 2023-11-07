@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"a>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
@@ -31,6 +31,65 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('client/css/style.css') }}" rel="stylesheet">
+
+    <style>
+        /* Custom CSS to style the circular joypad */
+        .joypad-container {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+            position: relative;
+        }
+
+        .joypad-button {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+        }
+
+        /* Adjust the button position to create arrow keys effect */
+        .joypad-top {
+            top: 0;
+            left: 100px;
+        }
+
+        .joypad-left {
+            top: 100px;
+            left: 0;
+        }
+
+        .joypad-center {
+            top: 100px;
+            left: 100px;
+        }
+
+        .joypad-right {
+            top: 100px;
+            left: 200px;
+        }
+
+        .joypad-bottom {
+            top: 200px;
+            left: 100px;
+        }
+
+        .joypad-button a {
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            /* Place text above the button */
+        }
+    </style>
 
 </head>
 
@@ -46,8 +105,8 @@
         <!-- Spinner End -->
 
         <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light bg-primary px-4 px-lg-5 py-3 py-lg-0" id="navbar">
-                <a href="" class="navbar-brand p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 sticky-top shadow-sm">
+                <a href="{{ route('home.index') }}" class="navbar-brand p-0">
                     <h1 class="m-0">SIPRAJA</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
@@ -80,7 +139,7 @@
             <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
                 <div class="container py-5 px-lg-5">
                     <div class="row g-5">
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-md-6 col-lg-4">
                             <p class="section-title text-white h5 mb-4">Alamat<span></span></p>
                             <p><i class="fa fa-map-marker-alt me-3"></i>Kasimbong, Masamba, North Luwu Regency,
                                 South Sulawesi 92961</p>
@@ -97,7 +156,7 @@
                                         class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-md-6 col-lg-4">
                             <p class="section-title text-white h5 mb-4">Halaman<span></span></p>
                             <a class="btn btn-link" href="{{ route('home.index') }}">Home</a>
                             <a class="btn btn-link" href="{{ route('tentang.index') }}">Tentang RJ</a>
@@ -105,46 +164,9 @@
                             <a class="btn btn-link" href="{{ route('galeri.index') }}">Galeri</a>
                             <a class="btn btn-link" href="{{ route('kontak.index') }}">Kontak</a>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <p class="section-title text-white h5 mb-4">Galeri<span></span></p>
-                            <div class="row g-2">
-                                <div class="col-4">
-                                    <img class="img-fluid" src="{{ asset('client/img/portfolio-1.jpg') }}"
-                                        alt="Image">
-                                </div>
-                                <div class="col-4">
-                                    <img class="img-fluid" src="{{ asset('client/img/portfolio-2.jpg') }}"
-                                        alt="Image">
-                                </div>
-                                <div class="col-4">
-                                    <img class="img-fluid" src="{{ asset('client/img/portfolio-3.jpg') }}"
-                                        alt="Image">
-                                </div>
-                                <div class="col-4">
-                                    <img class="img-fluid" src="{{ asset('client/img/portfolio-4.jpg') }}"
-                                        alt="Image">
-                                </div>
-                                <div class="col-4">
-                                    <img class="img-fluid" src="{{ asset('client/img/portfolio-5.jpg') }}"
-                                        alt="Image">
-                                </div>
-                                <div class="col-4">
-                                    <img class="img-fluid" src="{{ asset('client/img/portfolio-6.jpg') }}"
-                                        alt="Image">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <p class="section-title text-white h5 mb-4">Berlangganan<span></span></p>
-                            <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare
-                                velit non vulpu</p>
-                            <div class="position-relative w-100 mt-3">
-                                <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
-                                    placeholder="Your Email" style="height: 48px;">
-                                <button type="button"
-                                    class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                        class="fa fa-paper-plane text-primary fs-4"></i></button>
-                            </div>
+                        <div class="col-md-6 col-lg-4">
+                            <p class="section-title text-white h5 mb-4">Total Pengunjung<span></span></p>
+                            {{-- <h3>{{ $visitorCount }}</h3> --}}
                         </div>
                     </div>
                 </div>
@@ -183,23 +205,6 @@
 
         <!-- Template Javascript -->
         <script src="{{ asset('client/js/main.js') }}"></script>
-
-        <script>
-            // Get a reference to the navbar element
-            var navbar = document.getElementById('navbar');
-
-            // Add a scroll event listener
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 0) {
-                    // If the user has scrolled down, remove the 'bg-primary' class to remove the background color
-                    navbar.classList.remove('bg-primary');
-                } else {
-                    // If the user has scrolled back to the top, add the 'bg-primary' class to restore the background color
-                    navbar.classList.add('bg-primary');
-                }
-            });
-        </script>
-
         @stack('custom')
 
 

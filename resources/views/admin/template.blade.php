@@ -50,18 +50,17 @@
                             href="javascript:void(0);"></a>
                         <div class="responsive-logo">
                             <a href="index.html" class="header-logo">
-                                <img src="{{ asset('admin/images/brand/logo-3.png') }}" class="mobile-logo logo-1"
-                                    alt="logo">
-                                <img src="{{ asset('admin/images/brand/logo.png') }}" class="mobile-logo dark-logo-1"
+                                <img src="{{ asset('client/img/logo.png') }}" class="mobile-logo logo-1" alt="logo">
+                                <img src="{{ asset('client/img/logo.png') }}" class="mobile-logo dark-logo-1"
                                     alt="logo">
                             </a>
                         </div>
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal " href="index.html">
-                            <img src="{{ asset('admin/images/brand/logo.png') }}" class="header-brand-img desktop-logo"
-                                alt="logo">
-                            <img src="{{ asset('admin/images/brand/logo-3.png') }}" class="header-brand-img light-logo1"
-                                alt="logo">
+                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img desktop-logo"
+                                alt="logo">Admin Kejaksaan
+                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img light-logo1"
+                                alt="logo">Admin Kejaksaan
                         </a>
                         <!-- LOGO -->
                         <div class="d-flex order-lg-2 ms-auto header-right-icons">
@@ -95,14 +94,11 @@
                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                 <div class="drop-heading">
                                                     <div class="text-center">
-                                                        <h5 class="text-dark mb-0">Elizabeth Dyer</h5>
+                                                        <h5 class="text-dark mb-0">{{ auth()->user()->name }}</h5>
                                                         <small class="text-muted">Administrator</small>
                                                     </div>
                                                 </div>
                                                 <div class="dropdown-divider m-0"></div>
-                                                <a class="dropdown-item" href="profile.html">
-                                                    <i class="dropdown-icon fe fe-user"></i> Profile
-                                                </a>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                     <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
@@ -131,16 +127,15 @@
                 <aside class="app-sidebar">
                     <div class="side-header">
                         <a class="header-brand1" href="index.html">
-                            <img src="{{ asset('admin/images/brand/logo.png') }}"
-                                class="header-brand-img desktop-logo" alt="logo">
-                            <img src="{{ asset('admin/images/brand/logo-1.png') }}"
-                                class="header-brand-img toggle-logo" alt="logo">
-                            <img src="{{ asset('admin/images/brand/logo-2.png') }}"
-                                class="header-brand-img light-logo" alt="logo">
-                            <img src="{{ asset('admin/images/brand/logo-3.png') }}"
-                                class="header-brand-img light-logo1" alt="logo">
+                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img desktop-logo"
+                                alt="logo">
+                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img toggle-logo"
+                                alt="logo">
+                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img light-logo"
+                                alt="logo">
+                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img light-logo1"
+                                alt="logo">
                         </a>
-                        <!-- LOGO -->
                     </div>
                     <div class="main-sidemenu">
                         <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg"
@@ -158,53 +153,86 @@
                                         class="side-menu__label">Dashboard</span></a>
                             </li>
                             <li class="sub-category">
-                                <h3>Data</h3>
+                                <h3>Data Pengajuan</h3>
                             </li>
-                            <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-pengajuan.masuk') }}"><i
-                                        class="side-menu__icon fe fe-book"></i><span
-                                        class="side-menu__label">Pengajuan Masuk</span></a>
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-pengajuan.proses') }}"><i
-                                        class="side-menu__icon fe fe-book"></i><span
-                                        class="side-menu__label">Pengajuan Proses</span></a>
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-pengajuan.selesai') }}"><i
-                                        class="side-menu__icon fe fe-book"></i><span
-                                        class="side-menu__label">Pengajuan Selesai</span></a>
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-pengajuan.ditolak') }}"><i
-                                        class="side-menu__icon fe fe-book"></i><span
-                                        class="side-menu__label">Pengajuan Ditolak</span></a>
-                            </li>
-                            <li class="slide">
-                            </li>
-                            <li class="sub-category">
-                                <h3>Pages</h3>
-                            </li>
-                            <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-galeri.index') }}"><i
-                                        class="side-menu__icon fe fe-map"></i><span
-                                        class="side-menu__label">Home</span></a>
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-galeri.index') }}"><i
-                                        class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Tentang
-                                        RJ</span></a>
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-galeri.index') }}"><i
-                                        class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Tata Cara
-                                        Pengajuan</span></a>
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-galeri.index') }}"><i
-                                        class="side-menu__icon fe fe-map"></i><span
-                                        class="side-menu__label">Galeri</span></a>
-                                <a class="side-menu__item" data-bs-toggle="slide"
-                                    href="{{ route('admin-galeri.index') }}"><i
-                                        class="side-menu__icon fe fe-map"></i><span
-                                        class="side-menu__label">Kontak</span></a>
-                            </li>
+                            @if (auth()->user()->role == 'Admin')
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-pengajuan.masuk') }}"><i
+                                            class="side-menu__icon fe fe-book"></i><span
+                                            class="side-menu__label">Pengajuan Masuk</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-pengajuan.proses') }}"><i
+                                            class="side-menu__icon fe fe-book"></i><span
+                                            class="side-menu__label">Pengajuan Proses</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-pengajuan.selesai') }}"><i
+                                            class="side-menu__icon fe fe-book"></i><span
+                                            class="side-menu__label">Pengajuan Selesai</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-pengajuan.ditolak') }}"><i
+                                            class="side-menu__icon fe fe-book"></i><span
+                                            class="side-menu__label">Pengajuan Ditolak</span></a>
+                                </li>
+                                <li class="sub-category">
+                                    <h3>Data Umum</h3>
+                                </li>
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-desa.index') }}"><i
+                                            class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Akun
+                                            Desa</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-sosialisasi.index') }}"><i
+                                            class="side-menu__icon fe fe-users"></i><span
+                                            class="side-menu__label">Sosialisasi</span></a>
+                                </li>
+                                <li class="slide">
+                                </li>
+                                <li class="sub-category">
+                                    <h3>Pages</h3>
+                                </li>
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-galeri.index') }}"><i
+                                            class="side-menu__icon fe fe-map"></i><span
+                                            class="side-menu__label">Home</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-galeri.index') }}"><i
+                                            class="side-menu__icon fe fe-map"></i><span
+                                            class="side-menu__label">Tentang
+                                            RJ</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-carapengaduan.index') }}"><i
+                                            class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Tata
+                                            Cara
+                                            Pengajuan</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-galeri.index') }}"><i
+                                            class="side-menu__icon fe fe-map"></i><span
+                                            class="side-menu__label">Galeri</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-kontak.index') }}"><i
+                                            class="side-menu__icon fe fe-map"></i><span
+                                            class="side-menu__label">Kontak</span></a>
+                                </li>
+                            @else
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-pengajuan.index') }}"><i
+                                            class="side-menu__icon fe fe-book"></i><span
+                                            class="side-menu__label">Pengajuan</span></a>
+                                </li>
+                                <li class="sub-category">
+                                    <h3>Data Umum</h3>
+                                </li>
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-sosialisasi.index') }}"><i
+                                            class="side-menu__icon fe fe-users"></i><span
+                                            class="side-menu__label">Jadwal Sosialisasi</span></a>
+                                </li>
+                            @endif
                         </ul>
                         <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg"
                                 fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">

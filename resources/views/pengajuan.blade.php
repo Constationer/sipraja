@@ -13,10 +13,6 @@
             </div>
         </div>
     </div>
-    </div>
-    <!-- Navbar & Hero End -->
-
-
 
     <!-- Contact Start -->
     <div class="container-xxl py-5">
@@ -62,6 +58,19 @@
                                     </div>
                                 </div>
 
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text"
+                                            class="form-control @error('alamat_pelapor') is-invalid @enderror"
+                                            id="alamat_pelapor" placeholder="Alamat Pelapor" name="alamat_pelapor"
+                                            value="{{ old('alamat_pelapor') }}">
+                                        <label for="alamat_pelapor">Alamat Pelapor</label>
+                                        @error('alamat_pelapor')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12">
                                     <div class="form-floating">
                                         <input type="text"
@@ -70,6 +79,25 @@
                                             value="{{ old('nama_perkara') }}">
                                         <label for="nama_perkara">Nama Perkara</label>
                                         @error('nama_perkara')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <select class="form-select @error('desa_tersangka') is-invalid @enderror"
+                                            id="desa_tersangka" aria-label="DESA TERSANGKA" name="desa_tersangka">
+                                            <option value="" selected disabled>Pilih Salah Satu</option>
+                                            @foreach ($data as $key)
+                                                <option value="{{ $key->id }}"
+                                                    {{ old('desa_tersangka') == $key->id ? 'selected' : '' }}>
+                                                    {{ $key->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <label for="desa_tersangka">Desa Tersangka</label>
+                                        @error('desa_tersangka')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -129,8 +157,8 @@
 
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Deskripsi Perkara" id="deskripsi"
-                                            style="height: 150px" name="deskripsi">{{ old('deskripsi') }}</textarea>
+                                        <textarea class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Deskripsi Perkara"
+                                            id="deskripsi" style="height: 150px" name="deskripsi">{{ old('deskripsi') }}</textarea>
                                         <label for="deskripsi">Deskripsi</label>
                                         @error('deskripsi')
                                             <div class="invalid-feedback">{{ $message }}</div>

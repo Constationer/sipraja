@@ -215,7 +215,6 @@ h6,
 
 /*** Hero Header ***/
 .hero-header {
-    margin-bottom: 6rem;
     padding: 14rem 0;
     background:
         url(../img/blob-top-left.png),
@@ -451,7 +450,6 @@ h6,
 
 /*** Newsletter ***/
 .newsletter {
-    margin: 6rem 0;
     background:
         url(../img/blob-top-left.png),
         url(../img/blob-top-right.png),

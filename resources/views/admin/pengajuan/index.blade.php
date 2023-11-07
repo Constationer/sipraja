@@ -32,42 +32,63 @@
                                     <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
                                         <thead>
                                             <tr>
+                                                {{-- <th></th> --}}
                                                 <th class="wd-15p border-bottom-0">No</th>
                                                 <th class="wd-15p border-bottom-0">Nama Pelapor</th>
                                                 <th class="wd-20p border-bottom-0">Nama Perkara</th>
-                                                <th class="wd-15p border-bottom-0">Jenis Perkara</th>
                                                 <th class="wd-10p border-bottom-0">Alamat Tersangka</th>
                                                 <th class="wd-25p border-bottom-0">POLRES/POLSEK</th>
-                                                <th class="wd-20p border-bottom-0">No Telp Pelapor</th>
-                                                <th class="wd-25p border-bottom-0">Deskripsi Perkara</th>
+                                                <th class="wd-15p border-bottom-0">No Handphone</th>
+                                                <th class="wd-15p border-bottom-0">Status</th>
                                                 <th class="wd-15p border-bottom-0">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if ($data->isEmpty())
                                                 <tr class="text-center">
-                                                    <td colspan="9">No data available</td>
+                                                    <td colspan="10">No data available</td>
                                                 </tr>
                                             @else
                                                 @foreach ($data as $key)
                                                     <tr>
+                                                        {{-- <td class="control"></td> --}}
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $key->nama_pelapor }}</td>
                                                         <td>{{ $key->nama_perkara }}</td>
-                                                        <td>{{ $key->jenis_perkara }}</td>
                                                         <td>{{ $key->alamat_tersangka }}</td>
                                                         <td>{{ $key->polisi }}</td>
                                                         <td>{{ $key->no_pelapor }}</td>
-                                                        <td>{{ $key->deskripsi }}</td>
-                                                        <td>
-                                                            <a href="" class="btn btn-sm btn-warning"><i
-                                                                    class="fa fa-list-alt"></i></a>
-                                                        </td>
+                                                        <td>{{ $key->status }}</td>
+                                                        <!-- Add a button column to open the modal -->
+                                                        <td><button class="btn btn-primary view-details">View
+                                                                Details</button></td>
                                                     </tr>
                                                 @endforeach
                                             @endif
                                         </tbody>
                                     </table>
+                                    <!-- Bootstrap Modal -->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Row Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div id="modal-content"></div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -95,5 +116,28 @@
         <script src="{{ asset('admin/plugins/datatable/dataTables.responsive.min.js') }}"></script>
         <script src="{{ asset('admin/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
         <script src="{{ asset('admin/js/table-data.js') }}"></script>
+        <script>
+            $(document).ready(function() {
+                var table = $('#basic-datatable').DataTable();
+
+                $('#basic-datatable tbody').on('click', 'button.view-details', function() {
+                    var data = table.row($(this).closest('tr')).data();
+
+                    // Create HTML for the modal content
+                    var modalContent = '<p><strong>Nama Pelapor:</strong> ' + data[1] + '</p>' +
+                        '<p><strong>Nama Perkara:</strong> ' + data[2] + '</p>' +
+                        '<p><strong>Alamat Tersangka:</strong> ' + data[3] + '</p>' +
+                        '<p><strong>POLRES/POLSEK:</strong> ' + data[4] + '</p>' +
+                        '<p><strong>No Telp Pelapor:</strong> ' + data[5] + '</p>' +
+                        '<p><strong>Deskripsi Perkara:</strong> ' + data[6] + '</p>' +
+                        '<p><strong>Keterangan:</strong> ' + data[7] + '</p>' +
+                        '<p><strong>Status:</strong> ' + data[8] + '</p>';
+
+                    $('#modal-content').html(modalContent);
+
+                    $('#myModal').modal('show');
+                });
+            });
+        </script>
     @endpush
 @endsection

@@ -35,6 +35,7 @@
                                                 <th class="wd-15p border-bottom-0">No</th>
                                                 <th class="wd-15p border-bottom-0">Nama Pelapor</th>
                                                 <th class="wd-20p border-bottom-0">Nama Perkara</th>
+                                                <th class="wd-10p border-bottom-0">Desa Tersangka</th>
                                                 <th class="wd-10p border-bottom-0">Alamat Tersangka</th>
                                                 <th class="wd-25p border-bottom-0">POLRES/POLSEK</th>
                                                 <th class="wd-20p border-bottom-0">No Telp Pelapor</th>
@@ -53,6 +54,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $key->nama_pelapor }}</td>
                                                         <td>{{ $key->nama_perkara }}</td>
+                                                        <td>{{ $key->user->name }}</td>
                                                         <td>{{ $key->alamat_tersangka }}</td>
                                                         <td>{{ $key->polisi }}</td>
                                                         <td>{{ $key->no_pelapor }}</td>
@@ -67,6 +69,16 @@
                                                                     class="btn btn-success selesai-button"
                                                                     data-id="{{ $key->id }}">
                                                                     <i class="fe fe-check"></i>
+                                                                </button>
+                                                            </form>
+                                                            <form id="ditolak-form-{{ $key->id }}" method="POST"
+                                                                action="{{ route('admin-pengajuan.sendDitolak', ['id' => $key->id]) }}">
+                                                                @method('PUT')
+                                                                @csrf
+                                                                <input type="text" name="keterangan" hidden />
+                                                                <button type="button" class="btn btn-danger ditolak-button"
+                                                                    data-id="{{ $key->id }}">
+                                                                    <i class="fe fe-x"></i>
                                                                 </button>
                                                             </form>
                                                         </td>
@@ -131,6 +143,35 @@
                             const keterangan = result.value;
                             if (keterangan) {
                                 const form = document.getElementById(`selesai-form-${id}`);
+                                form.querySelector('[name="keterangan"]').value = keterangan;
+                                form.submit();
+                            } else {
+                                Swal.fire('Keterangan is required', '', 'error');
+                            }
+                        }
+                    });
+                });
+            });
+            document.querySelectorAll('.ditolak-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+
+                    Swal.fire({
+                        title: 'Apakah anda yakin?',
+                        text: `Data akan diubah statusnya menjadi Ditolak!`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Tidak',
+                        input: 'text',
+                        inputPlaceholder: 'Masukkan keterangan penolakan disini', // Placeholder text
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const keterangan = result.value;
+                            if (keterangan) {
+                                const form = document.getElementById(`ditolak-form-${id}`);
                                 form.querySelector('[name="keterangan"]').value = keterangan;
                                 form.submit();
                             } else {

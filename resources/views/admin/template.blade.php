@@ -218,7 +218,7 @@
                                     <a class="side-menu__item" data-bs-toggle="slide"
                                         href="{{ route('admin-kontak.index') }}"><i
                                             class="side-menu__icon fe fe-map"></i><span
-                                            class="side-menu__label">Kontak</span></a>
+                                            class="side-menu__label">Pertanyaan Kontak</span></a>
                                 </li>
                             @else
                                 <li class="slide">

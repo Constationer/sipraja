@@ -48,7 +48,7 @@
                                                     <td>{{ $key->handphone }}</td>
                                                     <td>
                                                         <a href="/admin/desa/edit/{{ $key->id }}"
-                                                            class="btn btn-warning"><i class="fe fe-align-justify"></i></a>
+                                                            class="btn btn-warning"><i class="fe fe-phone"></i></a>
                                                         <a href="/admin/desa/edit-password/{{ $key->id }}"
                                                             class="btn btn-danger"><i class="fa fa-lock"></i></a>
                                                     </td>

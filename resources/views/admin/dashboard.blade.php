@@ -1,6 +1,11 @@
 @extends('admin/template')
 
 @section('content')
+
+    @php
+        use Carbon\Carbon;
+    @endphp
+
     <!--app-content open-->
     <div class="main-content app-content mt-0">
         <div class="side-app">
@@ -28,6 +33,27 @@
                                 <div class="card-body">
                                     <a href="{{ route('admin-pengajuan.create') }}"
                                         class="btn btn-primary w-100">Pengajuan</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="card overflow-hidden">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="">Permintaan Sosialisasi</h6>
+                                            <h3 class="mb-2 number-font">{{ $permintaan }}</h3>
+                                        </div>
+                                        <div class="col col-auto">
+                                            <div
+                                                class="counter-icon bg-warning-gradient box-shadow-primary brround ms-auto">
+                                                <i class="fe fe-download text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +157,8 @@
                                                     <span class="alert-inner--text float-right fw-bold"><a
                                                             href="{{ $key->link }}" class="link"
                                                             target="_blank">{{ $key->link }}</a></span><br>
-                                                    <span class="alert-inner--text fw-bold">{{ $key->tanggal }}</span>
+                                                    <span
+                                                        class="alert-inner--text fw-bold">{{ Carbon::parse($key->tanggal)->format('d-M-Y') }}</span>
                                                 </div>
                                             @endforeach
                                         @else
@@ -156,8 +183,9 @@
                                     <div id="data-table_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <table id="data-table" class="table table-bordered mb-0 dataTable no-footer"
-                                                    role="grid" aria-describedby="data-table_info">
+                                                <table id="data-table"
+                                                    class="table table-bordered mb-0 dataTable no-footer" role="grid"
+                                                    aria-describedby="data-table_info">
                                                     <thead class="border-top">
                                                         <tr role="row">
                                                             <th class="bg-transparent border-bottom-0 w-5 sorting sorting_asc"
@@ -193,7 +221,8 @@
                                                                         target="_blank">{{ $key->link }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $key->tanggal }}</td>
+                                                                    {{ Carbon::parse($key->tanggal)->format('d-M-Y') }}
+                                                                </td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>

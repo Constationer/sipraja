@@ -26,7 +26,6 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <h3 class="card-title">Data Pertanyaan Kontak </h3>
-                                <a href="{{ route('admin-sosialisasi.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -55,6 +54,7 @@
                                                                 class="fe fe-send"></i></a>
 
                                                         <form id="delete-form-{{ $key->id }}" method="POST"
+                                                            style="display: inline !important"
                                                             action="{{ route('admin-kontak.delete', ['id' => $key->id]) }}">
                                                             @csrf
                                                             @method('DELETE')

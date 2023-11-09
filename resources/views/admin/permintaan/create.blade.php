@@ -11,10 +11,10 @@
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Sosialisasi</h1>
+                        <h1 class="page-title">Permintaan Sosialisasi</h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Data</a></li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">Sosialisasi</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Permintaan Sosialisasi</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Tambah</li>
                         </ol>
                     </div>
@@ -30,22 +30,9 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                        <form method="POST" action="{{ route('admin-sosialisasi.store') }}"
+                                        <form method="POST" action="{{ route('admin-permintaan.store') }}"
                                             class="form-horizontal" enctype="multipart/form-data">
                                             @csrf
-
-                                            <div class="row mb-4">
-                                                <label class="col-md-3 form-label" for="user_id">Pilih Desa</label>
-                                                <div class="col-md-9">
-                                                    <select class="form-control" type="input" name="user_id"
-                                                        id="user_id" required>
-                                                        @foreach ($data as $key)
-                                                            <option class="form-control" value="{{ $key->id }}">
-                                                                {{ $key->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
 
                                             <div class="row mb-4">
                                                 <label class="col-md-3 form-label" for="judul">Judul</label>
@@ -56,26 +43,10 @@
                                             </div>
 
                                             <div class="row mb-4">
-                                                <label class="col-md-3 form-label" for="deskripsi">Deskripsi</label>
+                                                <label class="col-md-3 form-label" for="keterangan">Keterangan</label>
                                                 <div class="col-md-9">
-                                                    <input class="form-control" type="input" name="deskripsi"
-                                                        id="deskripsi" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-4">
-                                                <label class="col-md-3 form-label" for="link">Link Zoom</label>
-                                                <div class="col-md-9">
-                                                    <input class="form-control" type="input" name="link" id="link"
-                                                        required>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-4">
-                                                <label class="col-md-3 form-label" for="tanggal">Tanggal Acara</label>
-                                                <div class="col-md-9">
-                                                    <input class="form-control" type="date" name="tanggal" id="tanggal"
-                                                        required>
+                                                    <input class="form-control" type="input" name="keterangan"
+                                                        id="keterangan" required>
                                                 </div>
                                             </div>
 

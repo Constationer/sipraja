@@ -161,7 +161,7 @@
                                         href="{{ route('admin-pengajuan.masuk') }}"><i
                                             class="side-menu__icon fe fe-book"></i><span
                                             class="side-menu__label">Pengajuan Masuk</span>
-                                        @if ($checker > 1)
+                                        @if ($checker >= 1)
                                             <i class="fe fe-alert-octagon text-danger"></i>
                                         @endif
                                     </a>
@@ -190,6 +190,15 @@
                                         href="{{ route('admin-sosialisasi.index') }}"><i
                                             class="side-menu__icon fe fe-users"></i><span
                                             class="side-menu__label">Sosialisasi</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-permintaan.index') }}"><i
+                                            class="side-menu__icon fe fe-users"></i><span
+                                            class="side-menu__label">Permintaan Sosialisasi</span>
+                                        @if ($checker2 >= 1)
+                                            <i class="fe fe-alert-octagon text-danger"></i>
+                                        @endif
+                                    </a>
+
                                 </li>
                                 <li class="slide">
                                 </li>
@@ -235,6 +244,10 @@
                                         href="{{ route('admin-sosialisasi.index') }}"><i
                                             class="side-menu__icon fe fe-users"></i><span
                                             class="side-menu__label">Jadwal Sosialisasi</span></a>
+                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                        href="{{ route('admin-permintaan.index') }}"><i
+                                            class="side-menu__icon fe fe-users"></i><span
+                                            class="side-menu__label">Permintaan Sosialisasi</span></a>
                                 </li>
                             @endif
                         </ul>
@@ -255,7 +268,7 @@
                 <div class="container">
                     <div class="row align-items-center flex-row-reverse">
                         <div class="col-md-12 col-sm-12 text-center">
-                            Copyright © <span id="year">2023</span> <a href="javascript:void(0);">SIPRAJA</a>.
+                            Copyright © <span id="year">2023</span> <a href="javascript:void(0);">RumahRJ</a>.
                             Designed
                             with <span class="fa fa-heart text-danger"></span> by <a href="javascript:void(0);">
                                 Brainwaves Digital

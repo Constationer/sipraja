@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pengajuan;
+use App\Models\Permintaan;
 use App\Models\Sosialisasi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,23 +16,27 @@ class SosialisasiController extends Controller
 
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         $data = Sosialisasi::with('user')->get();
 
-        return view('admin.sosialisasi.index', compact('data', 'checker'));
+        return view('admin.sosialisasi.index', compact('data', 'checker', 'checker2'));
     }
 
     public function create()
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         $data = User::where('role', 'user')->get();
-        return view('admin.sosialisasi.create', compact('data', 'checker'));
+        return view('admin.sosialisasi.create', compact('data', 'checker', 'checker2'));
     }
 
     public function store(Request $request)
@@ -81,12 +86,14 @@ class SosialisasiController extends Controller
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         $data           = User::all();
         $sosialisasi    = Sosialisasi::findoRFail($id);
-        return view('admin.sosialisasi.edit', compact('data', 'checker', 'sosialisasi'));
+        return view('admin.sosialisasi.edit', compact('data', 'checker', 'sosialisasi', 'checker2'));
     }
 
     public function update(Request $request, $id)

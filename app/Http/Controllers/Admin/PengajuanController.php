@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pengajuan;
+use App\Models\Permintaan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,23 +14,27 @@ class PengajuanController extends Controller
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         $data = Pengajuan::where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
-        return view('admin/pengajuan/index', compact('data', 'checker'));
+        return view('admin/pengajuan/index', compact('data', 'checker', 'checker2'));
     }
 
     public function create()
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         $data = User::where('role', 'user')->get();
 
-        return view('admin/pengajuan/create', compact('data', 'checker'));
+        return view('admin/pengajuan/create', compact('data', 'checker', 'checker2'));
     }
 
     public function generateUniqueCode()
@@ -121,8 +126,10 @@ class PengajuanController extends Controller
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         if (auth()->user()->role == 'Admin') {
             $data = Pengajuan::with('user')->where('status', 'Masuk')->orderBy('created_at', 'desc')->get();
@@ -130,15 +137,17 @@ class PengajuanController extends Controller
             $data = Pengajuan::with('user')->where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
 
-        return view('admin/pengajuan/masuk', compact('data', 'checker'));
+        return view('admin/pengajuan/masuk', compact('data', 'checker', 'checker2'));
     }
 
     public function proses()
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         if (auth()->user()->role == 'Admin') {
             $data = Pengajuan::where('status', 'Proses')->orderBy('created_at', 'desc')->get();
@@ -146,15 +155,17 @@ class PengajuanController extends Controller
             $data = Pengajuan::where('status', 'Proses')->where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
 
-        return view('admin/pengajuan/proses', compact('data', 'checker'));
+        return view('admin/pengajuan/proses', compact('data', 'checker', 'checker2'));
     }
 
     public function selesai()
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         if (auth()->user()->role == 'Admin') {
             $data = Pengajuan::where('status', 'Selesai')->orderBy('created_at', 'desc')->get();
@@ -162,15 +173,17 @@ class PengajuanController extends Controller
             $data = Pengajuan::where('status', 'Selesai')->where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
 
-        return view('admin/pengajuan/selesai', compact('data', 'checker'));
+        return view('admin/pengajuan/selesai', compact('data', 'checker', 'checker2'));
     }
 
     public function ditolak()
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         if (auth()->user()->role == 'Admin') {
             $data = Pengajuan::where('status', 'Ditolak')->orderBy('created_at', 'desc')->get();
@@ -178,7 +191,7 @@ class PengajuanController extends Controller
             $data = Pengajuan::where('status', 'Ditolak')->where('desa_tersangka', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
 
-        return view('admin/pengajuan/ditolak', compact('data', 'checker'));
+        return view('admin/pengajuan/ditolak', compact('data', 'checker', 'checker2'));
     }
 
     public function sendProses(Request $request, $id)

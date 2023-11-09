@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pengajuan;
+use App\Models\Permintaan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,25 +15,29 @@ class DesaController extends Controller
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
 
         $data = User::where('role', '!=', 'admin')->get();
 
-        return view('admin.desa.index', compact('data', 'checker'));
+        return view('admin.desa.index', compact('data', 'checker', 'checker2'));
     }
 
     public function edit($id)
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         $data           = User::findOrFail($id);
 
-        return view('admin.desa.edit', compact('data', 'checker'));
+        return view('admin.desa.edit', compact('data', 'checker', 'checker2'));
     }
 
     public function update(Request $request, $id)
@@ -50,12 +55,14 @@ class DesaController extends Controller
     {
         if (auth()->user()->role == 'Admin') {
             $checker = Pengajuan::where('status', 'Masuk')->count();
+            $checker2 = Permintaan::where('status', 'Pending')->count();
         } else {
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
+            $checker2 = NULL;
         }
         $data   = User::findOrFail($id);
 
-        return view('admin.desa.editpw', compact('data', 'checker'));
+        return view('admin.desa.editpw', compact('data', 'checker', 'checker2'));
     }
 
     public function updatepw(Request $request, $id)

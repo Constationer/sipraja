@@ -107,7 +107,7 @@
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 sticky-top shadow-sm">
                 <a href="{{ route('home.index') }}" class="navbar-brand p-0">
-                    <h1 class="m-0">SIPRAJA</h1>
+                    <h1 class="m-0">RumahRJ</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

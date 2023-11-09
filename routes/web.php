@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DesaController;
 use App\Http\Controllers\Admin\GaleriController as AdminGaleriController;
 use App\Http\Controllers\Admin\KontakController as AdminKontakController;
 use App\Http\Controllers\Admin\PengajuanController as AdminPengajuanController;
+use App\Http\Controllers\Admin\PermintaanController;
 use App\Http\Controllers\Admin\SosialisasiController as AdminSosialisasiController;
 use App\Http\Controllers\CaraPengaduanController;
 use App\Http\Controllers\GaleriController;
@@ -76,6 +77,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/sosialisasi/edit/{id}', [AdminSosialisasiController::class, 'edit'])->name('admin-sosialisasi.edit');
     Route::put('/admin/sosialisasi{id}', [AdminSosialisasiController::class, 'update'])->name('admin-sosialisasi.update');
     Route::delete('/admin/sosialisasi/delete/{id}', [AdminSosialisasiController::class, 'delete'])->name('admin-sosialisasi.delete');
+
+    //Admin Permintaan
+    Route::get('/admin/permintaan', [PermintaanController::class, 'index'])->name('admin-permintaan.index');
+    Route::get('/admin/permintaan/create', [PermintaanController::class, 'create'])->name('admin-permintaan.create');
+    Route::post('/admin/permintaan', [PermintaanController::class, 'store'])->name('admin-permintaan.store');
+    Route::get('/admin/permintaan/edit/{id}', [PermintaanController::class, 'edit'])->name('admin-permintaan.edit');
+    Route::put('/admin/permintaan{id}', [PermintaanController::class, 'update'])->name('admin-permintaan.update');
+    Route::delete('/admin/permintaan/delete/{id}', [PermintaanController::class, 'delete'])->name('admin-permintaan.delete');
+    Route::put('/admin/permintaan/proses/{id}', [PermintaanController::class, 'sendProses'])->name('admin-permintaan.sendProses');
+    Route::put('/admin/permintaan/ditolak/{id}', [PermintaanController::class, 'sendDitolak'])->name('admin-permintaan.sendDitolak');
 
     //Admin Sosialisasi
     Route::get('/admin/desa', [DesaController::class, 'index'])->name('admin-desa.index');

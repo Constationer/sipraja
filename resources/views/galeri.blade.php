@@ -28,19 +28,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="admin/images/media/1.jpg" alt=""
-                                    style="max-height:250px">
-                                <div class="portfolio-overlay">
-                                    <a class="btn btn-square btn-outline-light mx-1" href=""
-                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="rounded overflow-hidden">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="admin/images/media/1.jpg" alt=""
+                                <img class="img-fluid w-100" src="{{ asset('storage/' . $key->gambar) }}" alt=""
                                     style="max-height:250px">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href=""
@@ -50,17 +38,51 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
-        </div>
-    </div>
-    <div class="container-xxl">
-        <div class="container">
-            <div class="wow fadeInUp text-center first" data-wow-delay="0.1s">
-                <a href="{{ route('pengajuan.index') }}"
-                    class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight">Load More</a>
-            </div>
+            {{-- <div class="row mt-4 portfolio-container">
+                <div class="col-lg-4 col-md-6 offset-lg-4 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative overflow-hidden text-center">
+                            <a href="#" id="loadMoreButton"
+                                class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight w-100">Load
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
         </div>
     </div>
     <!-- Projects End -->
+    @push('custom')
+        <script>
+            $(document).ready(function() {
+                var offset = 0; // Keep track of the number of images loaded
+
+                $('#loadMoreButton').on('click', function(e) {
+                    e.preventDefault();
+
+                    // Make an AJAX request to fetch more images
+                    $.ajax({
+                        type: 'GET',
+                        url: "{{ route('load.more.images') }}",
+                        data: {
+                            offset: offset
+                        },
+                        success: function(response) {
+                            response.forEach(function(image) {
+                                $('#imageContainer').append(
+                                    '<div class="col-lg-4 col-md-6 portfolio-item wow fadeInUp" data-wow-delay="0.1s"><img class="img-fluid w-100" src="' +
+                                    image.image_url +
+                                    '" alt="New Image" style="max-height:250px"></div>');
+                            });
+                            offset += response.length;
+                        },
+                        error: function(error) {
+                            console.log('Error fetching new images');
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 @endsection

@@ -59,7 +59,7 @@
                                                     </td>
                                                     <td>{{ $key->updated_at }}</td>
                                                     <td>
-                                                        <form method="POST"
+                                                        <form method="POST" style="display: inline"
                                                             action="{{ route('admin-galeri.setVisible', ['id' => $key->id]) }}">
                                                             @method('PUT')
                                                             @csrf
@@ -68,6 +68,7 @@
                                                         </form>
 
                                                         <form id="delete-form-{{ $key->id }}" method="POST"
+                                                            style="display: inline"
                                                             action="{{ route('admin-galeri.delete', ['id' => $key->id]) }}">
                                                             @csrf
                                                             @method('DELETE')

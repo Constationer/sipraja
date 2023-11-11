@@ -41,10 +41,16 @@ class PermintaanController extends Controller
 
     public function store(Request $request)
     {
+        $surat = $request->file('gambar');
+        if ($surat) {
+            $suratPath = $surat->store('public/data/permintaan');
+        }
+        $suratPath = str_replace('public/', '', $suratPath);
+
         Permintaan::create([
             'user_id'       => auth()->user()->id,
             'judul'         => $request->judul,
-            'keterangan'    => $request->keterangan,
+            'keterangan'    => $suratPath,
         ]);
 
         return redirect()->route('admin-permintaan.index')->with('success', 'Data saved successfully');

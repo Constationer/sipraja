@@ -43,12 +43,13 @@
                                             </div>
 
                                             <div class="row mb-4">
-                                                <label class="col-md-3 form-label" for="keterangan">Keterangan</label>
+                                                <label class="col-md-3 form-label" for="gambar">Surat</label>
                                                 <div class="col-md-9">
-                                                    <input class="form-control" type="input" name="keterangan"
-                                                        id="keterangan" required>
+                                                    <input class="form-control" type="file" name="gambar" id="gambar"
+                                                        accept=".pdf,.doc,.docx">
                                                 </div>
                                             </div>
+
 
                                             <div class="mb-0 mt-4 row justify-content-end">
                                                 <div class="col-md-9">

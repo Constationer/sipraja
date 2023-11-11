@@ -273,53 +273,32 @@
                 <h1 class="text-center mb-5">Galeri Kegiatan</h1>
             </div>
             <div class="row g-4 portfolio-container">
-                {{-- @foreach ($galeri as $key) --}}
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="rounded overflow-hidden">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="client/img/img-2.jpg" alt=""
-                                style="max-height:250px">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-square btn-outline-light mx-1" href="client/img/img-2.jpg"
-                                    data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                @foreach ($galeri as $key)
+                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="{{ asset('storage/' . $key->gambar) }}" alt=""
+                                    style="max-height:250px">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="client/img/img-2.jpg"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="rounded overflow-hidden">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="client/img/img-2.jpg" alt=""
-                                style="max-height:250px">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-square btn-outline-light mx-1" href="client/img/img-2.jpg"
-                                    data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="rounded overflow-hidden">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="client/img/img-2.jpg" alt=""
-                                style="max-height:250px">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-square btn-outline-light mx-1" href="client/img/img-2.jpg"
-                                    data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- @endforeach --}}
-                {{-- <div class="col-lg-12 col-md-6 portfolio-item last wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="rounded overflow-hidden">
-                        <div class="position-relative overflow-hidden">
-                            <a href="{{ route('galeri.index') }}"
-                                class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div> --}}
+                @endforeach
             </div>
+            <div class="row mt-4 portfolio-container">
+                <div class="col-lg-4 col-md-6 offset-lg-4 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative overflow-hidden text-center">
+                            <a href="{{ route('galeri.index') }}"
+                                class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight w-100">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

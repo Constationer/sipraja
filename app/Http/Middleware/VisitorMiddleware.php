@@ -16,12 +16,10 @@ class VisitorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Simpan data pengunjung ke dalam database
         Visitor::create([
             'ip_address' => $request->ip(),
             'visited_at' => now(),
         ]);
-
 
         return $next($request);
     }

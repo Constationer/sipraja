@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Home - Restorative Justice</title>
+    <title>Rumah Restorative Justice Online</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -107,8 +107,8 @@
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 sticky-top shadow-sm">
                 <a href="{{ route('home.index') }}" class="navbar-brand p-0">
-                    <h1 class="m-0">RumahRJ</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                    {{-- <h1 class="m-0">RumahRJ</h1> --}}
+                    <img src="{{ asset('client/img/rumahrj.png') }}" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -166,7 +166,10 @@
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <p class="section-title text-white h5 mb-4">Total Pengunjung<span></span></p>
-                            {{-- <h3>{{ $visitorCount }}</h3> --}}
+                            {{-- <h3 class="text-white">Today:</h3>
+                            <h4 class="text-white">{{ $visitorToday }}</h4>
+                            <h3 class="text-white">Total:</h3> --}}
+                            <h4 class="text-white">{{ $visitor }} Pengunjung</h4>
                         </div>
                     </div>
                 </div>

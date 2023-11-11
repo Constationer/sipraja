@@ -20,7 +20,7 @@ class GaleriController extends Controller
             $checker = Pengajuan::where('status', 'Masuk')->where('desa_tersangka', auth()->user()->id)->count();
             $checker2 = NULL;
         }
-        $data = Galeri::all();
+        $data = Galeri::orderby('created_at', 'desc')->get();
 
         return view('admin.galeri.index', compact('data', 'checker', 'checker2'));
     }

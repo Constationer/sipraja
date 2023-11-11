@@ -4,14 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengajuan;
 use App\Models\User;
+use App\Models\Visitor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PengajuanController extends Controller
 {
     public function index()
     {
+        $visitor = Visitor::count();
+        $today = Carbon::now()->toDateString();
+        $visitorToday = Visitor::whereDate('visited_at', '>=', $today)
+            ->whereDate('visited_at', '<', Carbon::parse($today)->addDay())
+            ->distinct('ip_address')
+            ->count('ip_address');
         $data = User::where('role', '!=', 'admin')->get();
-        return view('pengajuan', compact('data'));
+        return view('pengajuan', compact('data', 'visitor', 'visitorToday'));
     }
 
     public function generateUniqueCode()

@@ -50,17 +50,18 @@
                             href="javascript:void(0);"></a>
                         <div class="responsive-logo">
                             <a href="index.html" class="header-logo">
-                                <img src="{{ asset('client/img/logo.png') }}" class="mobile-logo logo-1" alt="logo">
-                                <img src="{{ asset('client/img/logo.png') }}" class="mobile-logo dark-logo-1"
-                                    alt="logo">
+                                <img src="{{ asset('client/img/rumahrj.png') }}" class="mobile-logo logo-1"
+                                    style="max-width:90px" alt="logo">
+                                <img src="{{ asset('client/img/rumahrj.png') }}" class="mobile-logo dark-logo-1"
+                                    style="max-width:90px" alt="logo">
                             </a>
                         </div>
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal " href="index.html">
-                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img desktop-logo"
-                                alt="logo">Admin Kejaksaan
-                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img light-logo1"
-                                alt="logo">Admin Kejaksaan
+                            <img src="{{ asset('client/img/rumahrj.png') }}" class="header-brand-img desktop-logo"
+                                style="max-width:90px" alt="logo">
+                            <img src="{{ asset('client/img/rumahrj.png') }}" class="header-brand-img light-logo1"
+                                style="max-width:90px" alt="logo">
                         </a>
                         <!-- LOGO -->
                         <div class="d-flex order-lg-2 ms-auto header-right-icons">
@@ -127,13 +128,13 @@
                 <aside class="app-sidebar">
                     <div class="side-header">
                         <a class="header-brand1" href="index.html">
-                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img desktop-logo"
+                            <img src="{{ asset('client/img/rumahrj.png') }}" class="header-brand-img desktop-logo"
                                 alt="logo">
-                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img toggle-logo"
+                            <img src="{{ asset('client/img/rumahrj.png') }}" class="header-brand-img toggle-logo"
                                 alt="logo">
-                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img light-logo"
+                            <img src="{{ asset('client/img/rumahrj.png') }}" class="header-brand-img light-logo"
                                 alt="logo">
-                            <img src="{{ asset('client/img/logo.png') }}" class="header-brand-img light-logo1"
+                            <img src="{{ asset('client/img/rumahrj.png') }}" class="header-brand-img light-logo1"
                                 alt="logo">
                         </a>
                     </div>
@@ -206,7 +207,7 @@
                                     <h3>Pages</h3>
                                 </li>
                                 <li class="slide">
-                                    <a class="side-menu__item" data-bs-toggle="slide"
+                                    {{-- <a class="side-menu__item" data-bs-toggle="slide"
                                         href="{{ route('admin-galeri.index') }}"><i
                                             class="side-menu__icon fe fe-map"></i><span
                                             class="side-menu__label">Home</span></a>
@@ -219,7 +220,7 @@
                                         href="{{ route('admin-carapengaduan.index') }}"><i
                                             class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Tata
                                             Cara
-                                            Pengajuan</span></a>
+                                            Pengajuan</span></a> --}}
                                     <a class="side-menu__item" data-bs-toggle="slide"
                                         href="{{ route('admin-galeri.index') }}"><i
                                             class="side-menu__icon fe fe-map"></i><span
@@ -346,6 +347,14 @@
 
         <!-- CUSTOM JS -->
         <script src="{{ asset('admin/js/custom.js') }}"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#alternativeCloseButton').on('click', function() {
+                    $('.modal').modal('hide'); // Closes the active modal
+                });
+            });
+        </script>
 
 </body>
 

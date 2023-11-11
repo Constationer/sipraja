@@ -39,7 +39,7 @@
                                                 <th class="wd-5p border-bottom-0">No</th>
                                                 <th class="wd-15p border-bottom-0">Nama Desa</th>
                                                 <th class="wd-5p border-bottom-0">Judul</th>
-                                                <th class="wd-20p border-bottom-0">Keterangan</th>
+                                                <th class="wd-20p border-bottom-0">Surat</th>
                                                 <th class="wd-15p border-bottom-0">Status</th>
                                                 @if (auth()->user()->role == 'Admin')
                                                     <th class="wd-15p border-bottom-0">Action</th>
@@ -52,7 +52,9 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $key->user->name }}</td>
                                                     <td>{{ $key->judul }}</td>
-                                                    <td>{{ $key->keterangan }}</td>
+                                                    <td><a href="{{ asset('storage/' . $key->keterangan) }}" target="_blank"
+                                                            class="btn btn-warning"><i class="fe fe-file"></i> Unduh</a>
+                                                    </td>
                                                     </td>
                                                     <td>{{ $key->status }}</td>
                                                     @if (auth()->user()->role == 'Admin')

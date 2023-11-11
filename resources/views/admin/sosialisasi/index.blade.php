@@ -1,6 +1,11 @@
 @extends('admin/template')
 
 @section('content')
+
+    @php
+        use Carbon\Carbon;
+    @endphp
+
     <!--app-content open-->
     <div class="main-content app-content mt-0">
         <div class="side-app">
@@ -56,14 +61,15 @@
                                                     <td>{{ $key->deskripsi }}</td>
                                                     <td><a href="{{ $key->link }}" target="_blank">{{ $key->link }}
                                                     </td>
-                                                    <td>{{ $key->tanggal }}</td>
+                                                    <td>{{ Carbon::parse($key->tanggal)->format('d-M-Y') }}</td>
                                                     @if (auth()->user()->role == 'Admin')
-                                                        <td>
+                                                        <td class="text-nowrap">
+
                                                             <a href="/admin/sosialisasi/edit/{{ $key->id }}"
-                                                                class="btn btn-warning"><i
-                                                                    class="fe fe-align-justify"></i></a>
+                                                                class="btn btn-warning"><i class="fe fe-edit"></i></a>
 
                                                             <form id="delete-form-{{ $key->id }}" method="POST"
+                                                                style="display:inline !important"
                                                                 action="{{ route('admin-sosialisasi.delete', ['id' => $key->id]) }}">
                                                                 @csrf
                                                                 @method('DELETE')

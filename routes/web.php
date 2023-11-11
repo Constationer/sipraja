@@ -27,6 +27,7 @@ Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store')
 Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
 Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');
 Route::get('/pencarian/{kode}', [PencarianController::class, 'akses'])->name('pencarian.akses');
+Route::get('/load-more-images', [GaleriController::class, 'LoadMoreImages'])->name('load.more.images');
 
 // Route::get('/visitor-count', 'VisitorController@showCount');
 

@@ -153,9 +153,10 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Tutup</button>
+                                                                <div class="modal-footer"><button type="button"
+                                                                        class="btn btn-secondary"
+                                                                        id="alternativeCloseButton">
+                                                                        Close</button>
                                                                 </div>
                                                             </div>
                                                         </div>

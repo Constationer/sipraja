@@ -16,6 +16,6 @@ class CaraPengaduanController extends Controller
             ->whereDate('visited_at', '<', Carbon::parse($today)->addDay())
             ->distinct('ip_address')
             ->count('ip_address');
-        return view('cara_pengaduan', compact('visitor', ' visitorToday'));
+        return view('cara_pengaduan', compact('visitor', 'visitorToday'));
     }
 }

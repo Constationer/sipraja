@@ -16,6 +16,6 @@ class TentangController extends Controller
             ->whereDate('visited_at', '<', Carbon::parse($today)->addDay())
             ->distinct('ip_address')
             ->count('ip_address');
-        return view('tentang', compact('visitor', ' visitorToday'));
+        return view('tentang', compact('visitor', 'visitorToday'));
     }
 }

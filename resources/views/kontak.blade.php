@@ -9,7 +9,8 @@
                 <div class="col-12 text-center">
                     <h1 class="text-white animated slideInDown">Kontak</h1>
                     <hr class="bg-white mx-auto mt-0" style="width: 90px;">
-                    <h3 class="text-white">Hubungi Whatsapp kami di nomor: 08xxxxxxxx</h3>
+                    <h3 class="text-white">Hubungi Whatsapp kami di nomor: 082142493894
+                    </h3>
                 </div>
             </div>
         </div>

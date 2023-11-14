@@ -214,7 +214,7 @@
                         Hubungi Kami Melalui Whatsapp!
                     </h1>
                     <div class="position-relative w-100 mt-3">
-                        <a href="https://wa.me/6281224377189" target="_blank"
+                        <a href="https://wa.me/6282142493894" target="_blank"
                             class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Whatsapp Kami <i
                                 class="fab fa-whatsapp"></i></a>
                         </a>
@@ -355,8 +355,8 @@
                 <div class="col-lg-7">
                     <div class="wow fadeInUp" data-wow-delay="0.3s"
                         style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <a href="whatsapp://send?text=Check out this link: https://example.com" target="_blank"
-                            class="btn btn-success w-100 py-3 mt-3">
+                        <a href="whatsapp://send?text=Check out this link: https://rumahrjkejaksaan.luwuutarakab.go.id/"
+                            target="_blank" class="btn btn-success w-100 py-3 mt-3">
                             Bagikan Melalui Whatsapp <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>

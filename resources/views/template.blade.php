@@ -5,8 +5,13 @@
     <meta charset="utf-8">
     <title>Rumah Restorative Justice Online</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="kejaksaan, restorative justice, rumah restorative justice online, rj" name="keywords">
+    <meta
+        content="Restorative justice adalah alternatif penyelesaian perkara tindak
+    pidana yang dalam mekanisme tata cara peradilan pidana, berfokus pada pemidanaan yang diubah menjadi
+    proses dialog dan mediasi yang melibatkan pelaku, korban, keluarga pelaku/korban, dan pihak lain
+    yang terkait."
+        name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -143,8 +148,9 @@
                             <p class="section-title text-white h5 mb-4">Alamat<span></span></p>
                             <p><i class="fa fa-map-marker-alt me-3"></i>Kasimbong, Masamba, North Luwu Regency,
                                 South Sulawesi 92961</p>
-                            <p><i class="fa fa-phone-alt me-3"></i>0811-1300-7290</p>
-                            <p><i class="fa fa-envelope me-3"></i>dummy@mail.com</p>
+                            <p><i class="fa fa-phone-alt me-3"></i>0821-4249-3894
+                            </p>
+                            <p><i class="fa fa-envelope me-3"></i>kejari.masamba@gmail.com</p>
                             <div class="d-flex pt-2">
                                 <a class="btn btn-outline-light btn-social" href=""><i
                                         class="fab fa-twitter"></i></a>
@@ -177,11 +183,11 @@
                     <div class="copyright">
                         <div class="row">
                             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                                &copy; <a class="border-bottom" href="#">SIPRAJA</a>, All Right Reserved.
+                                &copy; <a class="border-bottom" href="#">RumahRJ</a>, All Right Reserved.
 
                                 <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML
-                                    Codex</a><br><br>
+                                Designed By <a class="border-bottom"
+                                    href="https://www.instagram.com/brainwaves.digital/">Brainwaves Digital</a><br><br>
                             </div>
                         </div>
                     </div>

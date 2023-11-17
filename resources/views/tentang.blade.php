@@ -176,8 +176,8 @@
                         <p class="section-title text-secondary justify-content-center">
                         <h2 class="text-center mb-5">Bagikan Kepada Orang Lain</h2>
                     </div>
-                    <a href="whatsapp://send?text=Check out this link: https://example.com" target="_blank"
-                        class="btn btn-success w-100 py-3">
+                    <a href="whatsapp://send?text=Check out this link: https://rumahrjkejaksaan.luwuutarakab.go.id/"
+                        target="_blank" class="btn btn-success w-100 py-3">
                         Bagikan Melalui Whatsapp <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>

@@ -183,14 +183,11 @@
                 <div class="col-lg-6 text-center text-lg-start wow fadeInUp text-center order-2 order-lg-1"
                     data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                     <h1 class="mb-4 animated slideInDown">Apa Itu Restorative Justice?</h1>
-                    <p class="pb-3 animated slideInDown">Restorative justice adalah alternatif penyelesaian perkara tindak
-                        pidana yang dalam mekanisme tata cara peradilan pidana, berfokus pada pemidanaan yang diubah menjadi
-                        proses dialog dan mediasi yang melibatkan pelaku, korban, keluarga pelaku/korban, dan pihak lain
-                        yang terkait.
-                        <br><br>
-                        Hal ini bertujuan untuk bersama-sama menciptakan kesepakatan atas penyelesaian perkara pidana yang
-                        adil dan seimbang bagi pihak korban maupun pelaku dengan mengedepankan pemulihan kembali pada
-                        keadaan semula dan mengembalikan pola hubungan baik dalam masyarakat.
+                    <p class="pb-3 animated slideInDown">Penyelesaian perkara tindak pidana dengan mengedepankan keadilan
+                        restoratif / Restorative Justice yang menekankan pemulihan kembali pada keadaan semula dan
+                        keseimbangan perlindungan dan kepentingan korban dan pelaku tindak pidana yang tidak berorientasi
+                        pada pembalasan merupakan suatu kebutuhan hukum masyarakat dan sebuah mekanisme yang harus dibangun
+                        dalam pelaksanaan kewenangan penuntutan dan pembaharuan sistem peradilan pidana
                     </p>
                     <a href="{{ route('tentang.index') }}"
                         class="btn btn-primary py-sm-3 px-sm-5 rounded-pill animated slideInRight w-100">Selengkapnya</a>

@@ -7,7 +7,7 @@
         <div class="container my-5 py-5 px-lg-5">
             <div class="row g-5 py-5">
                 <div class="col-12 text-center">
-                    <h1 class="text-white animated slideInDown">Tata Cara Pengaduan</h1>
+                    <h1 class="text-white animated slideInDown">Alur Pengajuan</h1>
                     <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                 </div>
             </div>
@@ -19,11 +19,8 @@
     <div class="container-xxl py-5">
         <div class="container py-5 px-lg-5">
             <div class="row g-5 align-items-center">
-                <div class="col-lg-6 text-center text-lg-start">
-                    <img class="img-fluid animated zoomIn" src="{{ 'client/img/cara1.png' }}" alt="">
-                </div>
-                <div class="col-lg-6 text-center text-lg-start">
-                    <img class="img-fluid animated zoomIn" src="{{ 'client/img/cara2.png' }}" alt="">
+                <div class="col-lg-12 text-center text-lg-start">
+                    <img class="img-fluid animated zoomIn" src="{{ 'client/img/cara.jpg' }}" alt="">
                 </div>
                 <div class="col-lg-12 text-lg-start">
                     <h4 class="animated slideInDown">Alur Pelaksanaan Restorative Justice</h4>
